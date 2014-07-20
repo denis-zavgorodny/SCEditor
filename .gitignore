@@ -10,3 +10,4 @@ sceditor.sublime-project
 sceditor.sublime-workspace
 node_modules/*
 distributable/*
+.DS_Store
