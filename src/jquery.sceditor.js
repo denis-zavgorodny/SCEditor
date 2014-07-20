@@ -347,7 +347,7 @@
 		 */
 		base.opts = options = $.extend({}, $.sceditor.defaultOptions, options);
 
-
+		base.original = $original;
 		/**
 		 * Creates the editor iframe and textarea
 		 * @private
