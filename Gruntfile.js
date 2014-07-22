@@ -17,6 +17,7 @@ module.exports = function(grunt) {
 				options: {
 					browser: true
 				}
+				
 			},
 			tests : {
 				src : ['tests/**/*.js'],
@@ -80,9 +81,11 @@ module.exports = function(grunt) {
 			build: {
 				options: {
 					warnings: true,
-					compress: true,
+					compress: {
+						drop_console: true
+					},
 					mangle: true,
-					banner: '/* SCEditor v<%= pkg.version %> | (C) 2011-2013, Sam Clarke | sceditor.com/license */\n'
+					banner: '/* SCEditor v<%= pkg.version %> | (C) 2011-2013,2014 Sam Clarke, Denis Zavgorodny fork | sceditor.com/license */\n'
 				},
 				files: [
 					{src: 'src/jquery.sceditor.js', dest: 'minified/jquery.sceditor.min.js'},

@@ -333,4 +333,32 @@
 		);
 	});
 
+	module('SCEditor - Placeholder Plugin', {
+		setup: function() {
+			var $textarea = $('#qunit-fixture textarea:first');
+
+			$textarea.sceditor({
+				plugins: 'bbcode, placeholder'
+			});
+
+			this.sceditor = $textarea.sceditor('instance');
+		},
+		teardown: function() {
+			this.sceditor.destroy();
+			this.sceditor = null;
+		}
+	});
+
+	test('Test Denis', function() {
+		expect(1);
+		console.log(this.sceditor.val());
+		equal(
+			this.sceditor.val(),
+			this.sceditor.original.attr('placeholder'),
+			'Placeholdered'
+		);
+
+		
+	});
+
 })();
