@@ -1,2 +1,4 @@
 /* SCEditor v1.4.5 | (C) 2011-2013,2014 Sam Clarke, Denis Zavgorodny fork | sceditor.com/license */
+
 $.sceditor.plugins.autoheight=function(){var a,b,c,d=this;d.signalReady=function(){a=$("body").find(".sceditor-container"),c=a.find("iframe"),b=$(this.currentNode()).closest("body"),b.css("height","auto")},d.signalKeydownEvent=function(){var a=this.opts;b=$(this.currentNode()).closest("body"),$wysiwygHTML=$(this.currentNode()).closest("html"),b.css("height","auto");var c=b.height();a.minHeight=a.minHeight||26,c>a.minHeight+5&&(c+=40),this.height(c>a.minHeight?c:a.minHeight)}};
+//# sourceMappingURL=autoheight.js.map

@@ -82,8 +82,9 @@ module.exports = function(grunt) {
 				options: {
 					warnings: true,
 					compress: {
-						drop_console: true
+						//drop_console: true
 					},
+					sourceMap: 'mymap.map',
 					mangle: true,
 					banner: '/* SCEditor v<%= pkg.version %> | (C) 2011-2013,2014 Sam Clarke, Denis Zavgorodny fork | sceditor.com/license */\n'
 				},

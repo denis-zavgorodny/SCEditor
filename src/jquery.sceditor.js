@@ -34,6 +34,7 @@
 					'<head>' +
 						'<style>.ie * {min-height: auto !important}</style>' +
 						'<meta http-equiv="Content-Type" content="text/html;charset={charset}" />' +
+						'{csslink}' +
 						'<link rel="stylesheet" type="text/css" href="{style}" />' +
 					'</head>' +
 					'<body contenteditable="true" {spellcheck}></body>' +
@@ -458,6 +459,15 @@
 			if(!options.spellcheck)
 				$sourceEditor.attr('spellcheck', 'false');
 
+			if (typeof options.csslink == 'string')
+				options.csslink = [options.csslink];
+
+			$.each(options.csslink, function(index, element){
+				options.csslink[index] = options.cssLinkTPL.replace('{URL}', element);	
+			});
+			options.csslink = options.csslink.join(' ');
+			
+
 			if(window.location.protocol === 'https:')
 				$wysiwygEditor.attr('src', 'javascript:false');
 
@@ -470,12 +480,12 @@
 
 			doc = getWysiwygDoc();
 			doc.open();
-			doc.write(_tmpl('html', { spellcheck: options.spellcheck ? '' : 'spellcheck="false"', charset: options.charset, style: options.style }));
+			doc.write(_tmpl('html', { spellcheck: options.spellcheck ? '' : 'spellcheck="false"', charset: options.charset, style: options.style, csslink: options.csslink }));
 			doc.close();
 
 			$wysiwygDoc  = $(doc);
 			$wysiwygBody = $(doc.body);
-
+			base.wysiwygBody = $wysiwygBody;
 			base.readOnly(!!options.readOnly);
 
 			// Add IE version class to the HTML element so can apply
@@ -2966,6 +2976,8 @@
 
 			return this;
 		};
+
+
 
 		/**
 		 * Handles the keydown event, used for shortcuts
@@ -5795,6 +5807,17 @@
 		 */
 		style: 'jquery.sceditor.default.css',
 
+		/**
+		 * Stylesheet files (url) to include in the WYSIWYG editor. Will style the WYSIWYG elements
+		 * @type Array
+		 */
+		csslink: [],
+		
+		/**
+		 * Stylesheet template to include in the WYSIWYG editor. Will style the WYSIWYG elements
+		 * @type string
+		 */
+		cssLinkTPL: '<link rel="stylesheet" href="{URL}" type="text/css" media="all" />',
 		/**
 		 * Comma separated list of fonts for the font selector
 		 * @type {String}
