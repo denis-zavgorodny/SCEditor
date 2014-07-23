@@ -454,7 +454,7 @@
 			var doc, tabIndex;
 
 			$sourceEditor  = $('<textarea></textarea>').hide();
-			$wysiwygEditor = $('<iframe frameborder="0"></iframe>');
+			$wysiwygEditor = $('<iframe frameborder="0" scrolling="' + options.scrollingIframe + '"></iframe>');
 
 			if(!options.spellcheck)
 				$sourceEditor.attr('spellcheck', 'false');
@@ -5818,6 +5818,11 @@
 		 * @type string
 		 */
 		cssLinkTPL: '<link rel="stylesheet" href="{URL}" type="text/css" media="all" />',
+		/**
+		 * IFRAME attribute form scroll Yes/No. 
+		 * @type string
+		 */
+		scrollingIframe: 'yes',
 		/**
 		 * Comma separated list of fonts for the font selector
 		 * @type {String}

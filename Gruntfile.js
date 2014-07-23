@@ -82,7 +82,7 @@ module.exports = function(grunt) {
 				options: {
 					warnings: true,
 					compress: {
-						//drop_console: true
+						drop_console: true
 					},
 					sourceMap: 'mymap.map',
 					mangle: true,
